@@ -1,9 +1,9 @@
 # Linear Algebra for Programmers
 
  - [Vector Addition](#vector-addition)
- - [Magnitude or Distance](magnitude-or-distance)
- - [Linear Interpolation](linear-interpolation)
- - [Normalize](normalize)
+ - [Magnitude or Distance](#magnitude-or-distance)
+ - [Linear Interpolation](#linear-interpolation)
+ - [Normalize](#normalize)
 
 ## Basic Linear Algebra
 
