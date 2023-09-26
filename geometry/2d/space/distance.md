@@ -1,6 +1,6 @@
 # A.K.A Hypotenuse of Triangle A.K.A Pythagorean Theorem
 
-Let ```dx``` be a, and ```dy``` be b. So by the end distance is equal to the square root of a squared plus b squared, ergo pythagorean theorem.
+Let ```dx``` be A, and ```dy``` be B and ```distance``` be C. So by the end distance C is equal to the square root of A squared plus B squared (A<sub>2</sub>+B<sub>2</sub>=C<sub>2</sub>), ergo pythagorean theorem.
 
 ```
 function distance(x1, y1, x2, y2):
