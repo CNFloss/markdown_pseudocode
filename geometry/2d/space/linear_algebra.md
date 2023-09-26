@@ -69,8 +69,8 @@ angle_deg = angle_rad * (180 / π)
 
 In this pseudocode ```A``` and ```B``` are the two endpoints between which you want to interpolate. ```t``` is the interpolation factor, typically ranging from 0 
 (corresponding to point ```A```) to 1 (corresponding to point ```B```). Values of t outside this range can be clamped to ensure they stay within [0, 1].```C``` represents 
-the interpolated point, and it's calculated by linearly interpolating between points ```A``` and ```B``` based on the value of t.This pseudocode can be used for linear 
-interpolation in 2D space, and you can adapt it to work in higher dimensions as well.
+the interpolated point, and it's calculated by linearly interpolating between points ```A``` and ```B``` based on the value of ```t```.This pseudocode can be used for 
+linear interpolation in 2D space, and you can adapt it to work in higher dimensions as well.
 
 ```
 function linearInterpolation(A, B, t):
