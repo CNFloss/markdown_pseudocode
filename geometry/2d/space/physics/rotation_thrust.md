@@ -3,7 +3,7 @@
 
 ## Table of Contents
  - [Falling Object With Thrust](#Determining-the-Path-to-a-Point-with-Rotation-and-Thrust)
- - [Path Calculation](#Determining-the-Path-of-a-vector2)
+ - [Path Calculation](#Determining-the-Path-of-a-Vector2)
 
 ## Determining the Path to a Point with Rotation and Thrust:
 
