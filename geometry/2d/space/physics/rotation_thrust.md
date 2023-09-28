@@ -149,7 +149,7 @@ Function calculate_path_to_point(current_x, current_y, target_x, target_y, gravi
 ```
 
 
-##Determining the Path of a Vector2:
+##Determining the Path of a Vector2
 
 ```
 Function calculate_path_to_point(current_x, current_y, target_x, target_y, gravity):
