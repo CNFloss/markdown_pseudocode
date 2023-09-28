@@ -98,7 +98,6 @@ Function calculate_path_with_constraints(current_x, current_y, target_x, target_
     Return path
 
 // Different constraints
-
 Function calculate_path_with_constraints_and_zero_speed_rotation(
     current_x, current_y, target_x, target_y, gravity, y_constraint, x1, x2
 ):
@@ -155,6 +154,9 @@ Function calculate_path_with_constraints_and_zero_speed_rotation(
         // Check for termination conditions (reached the target with zero speed and angle)
         If (distance_to_target <= 20 and abs(current_horizontal_speed) <= 0.1 and abs(current_vertical_speed) <= 0.1):
             Break
+
+    // Ensure that the final rotation is exactly zero
+    current_rotation = 0
 
     Return path
 
