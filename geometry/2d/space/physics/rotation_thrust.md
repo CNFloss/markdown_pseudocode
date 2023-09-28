@@ -97,8 +97,69 @@ Function calculate_path_with_constraints(current_x, current_y, target_x, target_
 
     Return path
 
+// Different constraints
 
-// Without avoiding a Y value
+Function calculate_path_with_constraints_and_zero_speed_rotation(
+    current_x, current_y, target_x, target_y, gravity, y_constraint, x1, x2
+):
+    // Initialize variables to store the path
+    path = []
+
+    While true:
+        // Calculate the vector from the current point to the target point
+        delta_x = target_x - current_x
+        delta_y = target_y - current_y
+
+        // Calculate the distance to the target point
+        distance_to_target = sqrt(delta_x^2 + delta_y^2)
+
+        // Calculate the angle to the target point
+        target_angle = atan2(delta_y, delta_x)
+
+        // Calculate the desired rotation angle to make rotation zero at the target
+        rotation = -current_rotation
+
+        // Calculate the thrust (limited to 0 to 4 units)
+        thrust = clamp(distance_to_target - 20, 0, 4)
+
+        // Calculate the horizontal and vertical components of thrust
+        thrust_x = thrust * cos(rotation)
+        thrust_y = thrust * sin(rotation)
+
+        // Calculate the new horizontal and vertical speeds
+        new_horizontal_speed = current_horizontal_speed + thrust_x
+        new_vertical_speed = current_vertical_speed + thrust_y - gravity
+
+        // Calculate the new position based on speeds and time_step
+        new_x = current_x + new_horizontal_speed * time_step
+        new_y = current_y + new_vertical_speed * time_step
+
+        // Apply constraints to stay within x1 to x2 range and above y_constraint
+        If new_x < x1:
+            new_x = x1
+        ElseIf new_x > x2:
+            new_x = x2
+        If new_y < y_constraint:
+            new_y = y_constraint
+
+        // Append the new position to the path
+        Append (new_x, new_y) to path
+
+        // Update the current position, speeds, and rotation for the next iteration
+        current_x = new_x
+        current_y = new_y
+        current_horizontal_speed = new_horizontal_speed
+        current_vertical_speed = new_vertical_speed
+        current_rotation += rotation
+
+        // Check for termination conditions (reached the target with zero speed and angle)
+        If (distance_to_target <= 20 and abs(current_horizontal_speed) <= 0.1 and abs(current_vertical_speed) <= 0.1):
+            Break
+
+    Return path
+
+
+// Without constriants
 
 Function calculate_path_to_point(current_x, current_y, target_x, target_y, gravity):
     // Initialize variables to store the path
