@@ -1,3 +1,13 @@
+In this pseudocode:
+
+ - ```start_x``` and ```start_y``` are the x and y coordinates of the starting point.
+ - ```end_x``` and ```end_y``` are the x and y coordinates of the ending point.
+ - ```arc_height``` is the height of the arc above the midpoint of the start and end points.
+
+The function calculates the parameters of an arc that connects the start and end points 
+while passing through the specified arc height. It determines the center of the circle, 
+radius, and start and end angles of the arc.
+
 ```
 Function calculate_arcing_path(start_x, start_y, end_x, end_y, arc_height):
     // Calculate the midpoint between the start and end points
@@ -28,15 +38,6 @@ Function calculate_arcing_path(start_x, start_y, end_x, end_y, arc_height):
 
 ```
 
-In this pseudocode:
-
- - ```start_x``` and ```start_y``` are the x and y coordinates of the starting point.
- - ```end_x``` and ```end_y``` are the x and y coordinates of the ending point.
- - ```arc_height``` is the height of the arc above the midpoint of the start and end points.
-
-The function calculates the parameters of an arc that connects the start and end points 
-while passing through the specified arc height. It determines the center of the circle, 
-radius, and start and end angles of the arc.
 
 
 
