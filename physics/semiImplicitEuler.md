@@ -13,6 +13,8 @@ class State {
         this.y = 0; // position in Y-axis
         this.horizontalVelocity = 0; // velocity in X-axis
         this.verticalVelocity = 0; // velocity in Y-axis
+        this.horizontalVelocity = 0;
+        this.verticalVelocity = 0;
     }
 }
 
@@ -23,11 +25,11 @@ function gravity(t) {
     return gravityConstant * t;
 }
 
-function applyForces(state, t, dt) {
+function applyForces(state, t, dt, forceX, forceY) {
     // Apply your own forces here based on the helicopter's controls or other factors.
     // For example, you can set state.horizontalForce and state.verticalForce based on user input.
-    state.horizontalForce = 0; // Apply your own horizontal force here
-    state.verticalForce = 0; // Apply your own vertical (upward) force here
+    state.horizontalForce = forceX * dt; // Apply your own horizontal force here
+    state.verticalForce = forceY * dt; // Apply your own vertical (upward) force here
 }
 
 function integrate(state, t, dt) {
