@@ -11,8 +11,8 @@ class State {
     constructor() {
         this.x = 0; // position in X-axis
         this.y = 0; // position in Y-axis
-        this.vx = 0; // velocity in X-axis
-        this.vy = 0; // velocity in Y-axis
+        this.horizontalVelocity = 0; // velocity in X-axis
+        this.verticalVelocity = 0; // velocity in Y-axis
     }
 }
 
@@ -23,29 +23,37 @@ function gravity(t) {
     return gravityConstant * t;
 }
 
+function applyForces(state, t, dt) {
+    // Apply your own forces here based on the helicopter's controls or other factors.
+    // For example, you can set state.horizontalForce and state.verticalForce based on user input.
+    state.horizontalForce = 0; // Apply your own horizontal force here
+    state.verticalForce = 0; // Apply your own vertical (upward) force here
+}
+
 function integrate(state, t, dt) {
     // Calculate new velocity using semi-implicit Euler integration
-    const dvx = 0; // No acceleration in X-axis in this example
-    const dvy = gravity(t + dt); // Apply gravity in Y-axis using the time variable
-    
+    const horizontalAcceleration = state.horizontalForce; // Horizontal acceleration (can be negative for deceleration)
+    const verticalAcceleration = gravity(t) + state.verticalForce; // Vertical acceleration (gravity + upward force)
+
     // Update velocity
-    state.vx += dvx * dt;
-    state.vy += dvy * dt;
+    state.horizontalVelocity += horizontalAcceleration * dt;
+    state.verticalVelocity += verticalAcceleration * dt;
 
     // Update position using updated velocity
-    state.x += state.vx * dt;
-    state.y += state.vy * dt;
+    state.x += state.horizontalVelocity * dt;
+    state.y += state.verticalVelocity * dt;
 }
 
 // Example usage
-const object = new State();
+const helicopter = new State();
 const dt = 0.1; // Time step in seconds
 let totalTime = 0; // Total time elapsed
 
 for (let i = 0; i < 100; ++i) {
-    integrate(object, totalTime, dt);
+    applyForces(helicopter, totalTime, dt); // Apply forces (user input or other factors)
+    integrate(helicopter, totalTime, dt); // Integrate the motion based on forces
     totalTime += dt;
 
-    console.log(`Time: ${totalTime.toFixed(2)} seconds, Position: (${object.x.toFixed(2)}, ${object.y.toFixed(2)}), Velocity: (${object.vx.toFixed(2)}, ${object.vy.toFixed(2)})`);
+    console.log(`Time: ${totalTime.toFixed(2)} seconds, Position: (${helicopter.x.toFixed(2)}, ${helicopter.y.toFixed(2)}), Horizontal Velocity: ${helicopter.horizontalVelocity.toFixed(2)} m/s, Vertical Velocity: ${helicopter.verticalVelocity.toFixed(2)} m/s`);
 }
 ```
