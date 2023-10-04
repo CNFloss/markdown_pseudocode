@@ -57,3 +57,116 @@ for (let i = 0; i < 100; ++i) {
     console.log(`Time: ${totalTime.toFixed(2)} seconds, Position: (${helicopter.x.toFixed(2)}, ${helicopter.y.toFixed(2)}), Horizontal Velocity: ${helicopter.horizontalVelocity.toFixed(2)} m/s, Vertical Velocity: ${helicopter.verticalVelocity.toFixed(2)} m/s`);
 }
 ```
+
+Certainly! Here's an example demonstrating semi-implicit Euler integration for simulating spacecraft motion in a gravitational field while applying thrust. This approach calculates velocities using the acceleration at the end of the time step, providing a more stable simulation:
+
+```javascript
+class Spacecraft {
+    constructor() {
+        this.x = 0; // position in X-axis
+        this.y = 0; // position in Y-axis
+        this.velocityX = 0; // velocity in X-axis
+        this.velocityY = 0; // velocity in Y-axis
+    }
+}
+
+function calculateGravity(mass) {
+    const gravitationalConstant = 9.81; // Gravitational constant in m/s^2
+    return mass * gravitationalConstant;
+}
+
+function applyThrust(spacecraft, thrustForceX, thrustForceY, dt) {
+    const mass = 1000; // Mass of the spacecraft in kg
+    const gravitationalForce = calculateGravity(mass);
+    
+    // Calculate acceleration using Newton's second law: F = m * a
+    const accelerationX = (thrustForceX / mass);
+    const accelerationY = (thrustForceY / mass) - (gravitationalForce / mass);
+
+    // Update position using the current velocity (explicit Euler)
+    spacecraft.x += spacecraft.velocityX * dt;
+    spacecraft.y += spacecraft.velocityY * dt;
+    
+    // Update velocity using the acceleration at the end of the time step (semi-implicit Euler)
+    spacecraft.velocityX += accelerationX * dt;
+    spacecraft.velocityY += accelerationY * dt;
+}
+
+// Example usage
+const spaceship = new Spacecraft();
+const dt = 0.1; // Time step in seconds
+
+// Applying thrust in X and Y directions (in Newtons)
+const thrustForceX = 5000; // Thrust in X-axis
+const thrustForceY = 6000; // Thrust in Y-axis
+
+let totalTime = 0; // Total time elapsed
+
+for (let i = 0; i < 100; ++i) {
+    applyThrust(spaceship, thrustForceX, thrustForceY, dt);
+    totalTime += dt;
+
+    console.log(`Time: ${totalTime.toFixed(2)} seconds, Position: (${spaceship.x.toFixed(2)}, ${spaceship.y.toFixed(2)}), Velocity: (${spaceship.velocityX.toFixed(2)}, ${spaceship.velocityY.toFixed(2)})`);
+}
+```
+
+In this code, the semi-implicit Euler integration is applied within the `applyThrust` function. 
+First, the position is updated using the current velocity (explicit Euler), and then the velocity 
+is updated using the acceleration at the end of the time step (semi-implicit Euler). This approach 
+results in a more stable simulation compared to explicit Euler integration, especially for systems 
+with varying forces and accelerations over time.
+
+```
+class Spacecraft {
+    constructor() {
+        this.x = 0; // position in X-axis
+        this.y = 0; // position in Y-axis
+        this.velocityX = 0; // velocity in X-axis
+        this.velocityY = 0; // velocity in Y-axis
+    }
+}
+
+function calculateGravity(mass) {
+    const gravitationalConstant = 9.81; // Gravitational constant in m/s^2
+    return mass * gravitationalConstant;
+}
+
+function applyThrust(spacecraft, thrustForceX, thrustForceY, dt) {
+    const mass = 1000; // Mass of the spacecraft in kg
+    const gravitationalForce = calculateGravity(mass);
+    
+    // Calculate acceleration using Newton's second law: F = m * a
+    const accelerationX = (thrustForceX / mass);
+    const accelerationY = (thrustForceY / mass) - (gravitationalForce / mass);
+
+    // Update position using the current velocity (explicit Euler)
+    spacecraft.x += spacecraft.velocityX * dt;
+    spacecraft.y += spacecraft.velocityY * dt;
+    
+    // Update velocity using the acceleration at the end of the time step (semi-implicit Euler)
+    spacecraft.velocityX += accelerationX * dt;
+    spacecraft.velocityY += accelerationY * dt;
+}
+
+// Example usage
+const spaceship = new Spacecraft();
+const dt = 0.1; // Time step in seconds
+
+// Applying thrust in X and Y directions (in Newtons)
+const thrustForceX = 5000; // Thrust in X-axis
+const thrustForceY = 6000; // Thrust in Y-axis
+
+let totalTime = 0; // Total time elapsed
+
+for (let i = 0; i < 100; ++i) {
+    applyThrust(spaceship, thrustForceX, thrustForceY, dt);
+    totalTime += dt;
+
+    console.log(`Time: ${totalTime.toFixed(2)} seconds, Position: (${spaceship.x.toFixed(2)}, ${spaceship.y.toFixed(2)}), Velocity: (${spaceship.velocityX.toFixed(2)}, ${spaceship.velocityY.toFixed(2)})`);
+}
+```
+In this code, the semi-implicit Euler integration is applied within the applyThrust function. 
+First, the position is updated using the current velocity (explicit Euler), and then the velocity 
+is updated using the acceleration at the end of the time step (semi-implicit Euler). This approach 
+results in a more stable simulation compared to explicit Euler integration, especially for systems 
+with varying forces and accelerations over time.
