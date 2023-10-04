@@ -6,7 +6,7 @@ object's position and velocity based on the calculated derivatives and the time 
 
 The example usage at the end demonstrates how the object's motion changes over time due to the simulated gravity. 
 
-```
+```javascript
 class State {
     constructor() {
         this.x = 0; // position in X-axis
