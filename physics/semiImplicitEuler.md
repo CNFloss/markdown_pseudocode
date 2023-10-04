@@ -1,8 +1,7 @@
 Based on https://gafferongames.com/post/integration_basics/ , in this JavaScript version, the State class represents 
-the object's position and velocity in both X and Y axes. The Derivative class represents the derivatives of these
-values with respect to time. The gravity function simulates the effect of gravity, where acceleration increases over time. 
-The evaluate function calculates the derivatives at different points in time, and the integrate function updates the 
-object's position and velocity based on the calculated derivatives and the time variable.
+the object's position and velocity in both X and Y axes. The gravity function simulates the effect of gravity, where 
+acceleration increases over time, and the integrate function updates the object's position and velocity based on the 
+calculated derivatives and the time variable.
 
 The example usage at the end demonstrates how the object's motion changes over time due to the simulated gravity. 
 
