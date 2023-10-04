@@ -16,15 +16,6 @@ class State {
     }
 }
 
-class Derivative {
-    constructor() {
-        this.dx = 0; // dx/dt = velocity in X-axis
-        this.dy = 0; // dy/dt = velocity in Y-axis
-        this.dvx = 0; // dvx/dt = acceleration in X-axis
-        this.dvy = 0; // dvy/dt = acceleration in Y-axis
-    }
-}
-
 function gravity(t) {
     // Simulate gravity, where acceleration increases over time.
     // You can modify this function to create more complex behaviors.
@@ -32,57 +23,18 @@ function gravity(t) {
     return gravityConstant * t;
 }
 
-function evaluate(initial, t, dt, d) {
-    const state = new State();
-    state.x = initial.x + d.dx * dt;
-    state.y = initial.y + d.dy * dt;
-    state.vx = initial.vx + d.dvx * dt;
-    state.vy = initial.vy + d.dvy * dt;
-
-    const output = new Derivative();
-    output.dx = state.vx;
-    output.dy = state.vy;
-    output.dvx = 0; // No acceleration in X-axis in this example except gravity
-    output.dvy = gravity(t + dt); // Apply gravity in Y-axis using the time variable
-    return output;
-}
-
 function integrate(state, t, dt) {
-    const a = new Derivative();
-    const b = new Derivative();
-    const c = new Derivative();
-    const d = new Derivative();
+    // Calculate new velocity using semi-implicit Euler integration
+    const dvx = 0; // No acceleration in X-axis in this example
+    const dvy = gravity(t + dt); // Apply gravity in Y-axis using the time variable
+    
+    // Update velocity
+    state.vx += dvx * dt;
+    state.vy += dvy * dt;
 
-    a.dx = state.vx;
-    a.dy = state.vy;
-    a.dvx = 0; // No acceleration in X-axis in this example except gravity
-    a.dvy = gravity(t);
-
-    b.dx = state.vx + a.dvx * dt / 2;
-    b.dy = state.vy + a.dvy * dt / 2;
-    b.dvx = 0; // No acceleration in X-axis in this example except gravity
-    b.dvy = gravity(t + dt / 2);
-
-    c.dx = state.vx + b.dvx * dt / 2;
-    c.dy = state.vy + b.dvy * dt / 2;
-    c.dvx = 0; // No acceleration in X-axis in this example except gravity
-    c.dvy = gravity(t + dt / 2);
-
-    d.dx = state.vx + c.dvx * dt;
-    d.dy = state.vy + c.dvy * dt;
-    d.dvx = 0; // No acceleration in X-axis in this example except gravity
-    d.dvy = gravity(t + dt);
-
-    const dxdt = 1.0 / 6.0 * (a.dx + 2.0 * (b.dx + c.dx) + d.dx);
-    const dydt = 1.0 / 6.0 * (a.dy + 2.0 * (b.dy + c.dy) + d.dy);
-
-    const dvxdt = 0; // No change in acceleration in X-axis in this example
-    const dvydt = 1.0 / 6.0 * (a.dvy + 2.0 * (b.dvy + c.dvy) + d.dvy);
-
-    state.x = state.x + dxdt * dt;
-    state.y = state.y + dydt * dt;
-    state.vx = state.vx + dvxdt * dt;
-    state.vy = state.vy + dvydt * dt;
+    // Update position using updated velocity
+    state.x += state.vx * dt;
+    state.y += state.vy * dt;
 }
 
 // Example usage
