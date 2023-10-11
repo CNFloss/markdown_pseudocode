@@ -85,7 +85,7 @@ function linearInterpolation(A, B, t):
     return C
 ```
 
-### Normailize
+### Normalize
 
 ```
 function normalizeVector(vector):
