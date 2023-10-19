@@ -1,4 +1,4 @@
-`
+```
 function bubbleSort(arr) {
     let n = arr.length;
     let swapped;
@@ -22,5 +22,5 @@ function bubbleSort(arr) {
 
 const array = [64, 34, 25, 12, 22, 11, 90];
 console.log("Unsorted array:", array);
-console.log("Sorted array:", bubbleSort([...array])); // Using a spread to avoid mutating the original array
-`
+console.log("Sorted array:", bubbleSort([...array]));
+```
