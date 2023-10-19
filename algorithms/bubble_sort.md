@@ -14,13 +14,12 @@ function bubbleSort(arr) {
                 swapped = true;
             }
         }
-        n--;  // Decrease n since the largest element is now at the end
+        n--;  
     } while (swapped);
 
     return arr;
 }
 
-// Test
 const array = [64, 34, 25, 12, 22, 11, 90];
 console.log("Unsorted array:", array);
 console.log("Sorted array:", bubbleSort([...array])); // Using a spread to avoid mutating the original array
