@@ -1,4 +1,4 @@
-```
+```plaintext
 Function bubbleSort(array):
     // Length of the array
     n = Length of array
