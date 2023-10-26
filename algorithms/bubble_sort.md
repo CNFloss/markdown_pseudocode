@@ -1,5 +1,5 @@
 ```plaintext
-Function bubbleSort(array):
+Function BubbleSort(array):
     // Length of the array
     n = Length of array
 
