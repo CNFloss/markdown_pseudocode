@@ -24,7 +24,11 @@ function vectorAddition(vector1, vector2):
 ### Magnitude or Distance
 #### A.K.A Hypotenuse of Triangle A.K.A Pythagorean Theorem
 
-Let ```dx``` be A, and ```dy``` be B and ```distance``` be C. So the end distance C is equal to the square root of A squared plus B squared (A<sup>2</sup>+B<sup>2</sup>=C<sup>2</sup>), ergo pythagorean theorem.
+Let ```dx``` be A, and ```dy``` be B and ```distance``` be C. So the end distance C is equal to the square root of A squared plus B squared
+(A<sup>2</sup>+B<sup>2</sup>=C<sup>2</sup>), ergo Pythagorean theorem.
+
+In essence, while both formulas are rooted in the Pythagorean theorem and appear similar, "magnitude" typically refers to the length of a vector originating from the
+origin, and "distance" refers to the separation between two distinct points in space.
 
 ##### Magnitude (Single Point/Vector)
 
