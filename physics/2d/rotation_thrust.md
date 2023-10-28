@@ -1,5 +1,4 @@
 # Rotation and Thrust
-...and other butt stuff. 
 
 ## Table of Contents
  - [Falling Object With Thrust](#Determining-the-Path-to-a-Point-with-Rotation-and-Thrust)
