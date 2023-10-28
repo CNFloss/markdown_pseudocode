@@ -24,7 +24,7 @@ function vectorAddition(vector1, vector2):
 ### Magnitude or Distance
 #### A.K.A Hypotenuse of Triangle A.K.A Pythagorean Theorem
 
-Let ```dx``` be A, and ```dy``` be B and ```distance``` be C. So by the end distance C is equal to the square root of A squared plus B squared (A<sup>2</sup>+B<sup>2</sup>=C<sup>2</sup>), ergo pythagorean theorem.
+Let ```dx``` be A, and ```dy``` be B and ```distance``` be C. So the end distance C is equal to the square root of A squared plus B squared (A<sup>2</sup>+B<sup>2</sup>=C<sup>2</sup>), ergo pythagorean theorem.
 
 ##### Magnitude (Single Point/Vector)
 
